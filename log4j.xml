@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%l] %-5p - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="file" class="org.apache.log4j.FileAppender">
+		<!-- name is the path and name of the log file. -->
+		<param name="File" value="debug.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%l] %-5p - %m%n" />
+			<!-- <param name="ConversionPattern" value="[Time: %d] [Thread: %t] [Level: 
+				%p]%m%n" /> -->
+		</layout>
+	</appender>
+
+	<appender name="file-chat" class="org.apache.log4j.FileAppender">
+		<!-- name is the path and name of the log file. -->
+		<param name="File" value="chat.log" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} [%l] %-5p - %m%n" />
+		</layout>
+	</appender>
+
+	<category name="org.hibernate">
+		<priority value="INFO" />
+	</category>
+
+	<category name="org.postgresql">
+		<priority value="TRACE" />
+	</category>
+
+	<category name="py.edu.uca.edw.java2.chat.persistence.AuditoriaDAO">
+		<priority value="TRACE" />
+		<appender-ref ref="file-chat" />
+	</category>
+
+	<!-- Ejemplos de categorías apagadas o con valor distinto al thresold general -->
+	<category name="org.ajax4jsf.context.AjaxContext">
+		<priority value="ERROR" />
+	</category>
+
+	<category name="org.hibernate.cfg.AnnotationBinder">
+		<priority value="ERROR" />
+	</category>
+
+	<category name="org.jnp">
+		<priority value="WARN" />
+	</category>
+
+	<category name="com">
+		<priority value="WARN" />
+	</category>
+
+	<!-- Limit the org.apache category to INFO as its DEBUG is verbose -->
+	<category name="org.apache">
+		<priority value="INFO" />
+	</category>
+
+	<!-- Limit the jacorb category to WARN as its INFO is verbose -->
+	<category name="jacorb">
+		<priority value="WARN" />
+	</category>
+
+	<root>
+		<priority value="TRACE" />
+		<!-- <appender-ref ref="file" /> -->
+		<appender-ref ref="console" />
+	</root>
+</log4j:configuration>
