@@ -4,7 +4,7 @@
 
 	<groupId>py.com.sodep.export</groupId>
 	<artifactId>sodep-export-utilities</artifactId>
-	<version>0.0.10-SNAPSHOT</version>
+	<version>0.0.10</version>
 	<packaging>jar</packaging>
 
 	<name>sodep-export-utilities</name>
